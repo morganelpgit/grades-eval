@@ -38,4 +38,40 @@ data |>
 ```
 
 
+```{r}
+courses <- data
+```
+
+### 3 
+
+```{r}
+students <- vroom(here("data","students.csv"))
+
+spec(students)
+
+students <- vroom(here("data","students.csv"), 
+                  col_types = cols(
+                    id = col_double(),
+                       group = col_double(),
+                       birth_date = col_date(format = "%Y-%m-%d"),
+                       sex = col_factor(),
+                       .delim = ","
+                       ))
+
+students |> summarise(
+  birth_class = class(birth_date),
+  sex_class = class(sex),
+  group_class = class(group),
+  id_class = class(id)
+)
+```
+
+The birth_date column of the students data frame is of class  `r class(students |> pull(birth_date))`.
+
+The sex column is of class  `r class(students |> pull(sex))`.
+
+The group column is of class  `r class(students |> pull(group))`.
+
+The id column is of class  `r class(students |> pull(id))`.
+
 
