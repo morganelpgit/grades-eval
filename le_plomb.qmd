@@ -113,6 +113,19 @@ students |>
 ### 7 
 
 ```{r}
+library(lubridate)
 
+students_age <- students |>
+  mutate(
+    age = round(time_length(today() - birth_date, unit = "year"))
+  )
+
+students_age |>
+  ggplot(aes(x = age)) +
+  geom_histogram(binwidth = 1) +
+  labs(
+    x = "age"
+  ) +
+  theme_minimal()
 ```
 
