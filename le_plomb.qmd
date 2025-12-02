@@ -261,7 +261,27 @@ grades_per_student |>
     fill = "sex"
   ) +
   theme_minimal()
-
 ```
+### 15
+
+```{r}
+ehs_id <- courses |>
+  filter(course == "Energy Harvesting and Sustainability") |>
+  pull(course_id)
+
+# number of grades in this course per student
+ehs_per_student <- full_data |>
+  filter(course == "Energy Harvesting and Sustainability") |>
+  summarise(
+    n_grades = n(),
+    .by = c(id, group, sex)
+  )
+
+ehs_per_student |>
+  slice_head(n = 5) |>
+  knitr::kable()
+```
+
+## 5 
 
 
