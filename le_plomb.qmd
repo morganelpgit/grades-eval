@@ -417,10 +417,19 @@ final_grades |>
   slice_head(n = 5) |>
   knitr::kable()
 ```
+
+
 ### 24 
 
 ```{r}
-
+final_grades |>
+  ggplot(aes(x = as.factor(group), y = final_grade)) +
+  geom_violin() +
+  labs(
+    x = "group",
+    y = "final grade"
+  ) +
+  theme_minimal()
 ```
 
 
