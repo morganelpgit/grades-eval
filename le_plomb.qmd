@@ -365,6 +365,16 @@ new_df |>
 ### 21 
 
 ```{r}
+new_df |>
+  summarise(
+    correlation = cor(
+      `Energy Harvesting and Sustainability`,
+      `Quantum Physics and Time Manipulation`
+    ),
+    .by = group
+  ) |>
+  slice_head(n=5) |>
+  knitr::kable() 
 
 ```
 
