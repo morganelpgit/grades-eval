@@ -81,4 +81,19 @@ grades <- vroom(here("data","grades.csv"),
                 delim = "|",
                 na = "*",)
 ```
+## 2 
+
+### 5 
+
+```{r}
+students |>
+  summarise(n = n(), .by = group) |>
+  ggplot(aes(x = group, y = n)) +
+  geom_col() +
+  labs(
+    x = "group",
+    y = "number of students"
+  ) +
+  theme_minimal()
+```
 
