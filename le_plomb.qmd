@@ -141,3 +141,14 @@ table |>
   knitr::kable()
 ```
 
+### 9 
+
+```{r}
+students_age |>
+  slice_max(age, n = 1, by = group) |>
+  select(id, sex, age, group) |>
+  
+  arrange(desc(age)) |>
+  knitr::kable()
+```
+
