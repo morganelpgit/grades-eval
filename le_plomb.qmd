@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-## 1.1
+## 1
 
 ```{r}
 #| message: false
@@ -77,6 +77,8 @@ The id column is of class  `r class(students |> pull(id))`.
 ### 4 
 
 ```{r}
+#| message: false
+#| warning: false
 grades <- vroom(here("data","grades.csv"),
                 delim = "|",
                 na = "*",)
@@ -151,4 +153,18 @@ students_age |>
   arrange(desc(age)) |>
   knitr::kable()
 ```
+
+## 3 
+
+### 10
+
+```{r}
+nb_grades <- grades |>
+  filter(!is.na(grade)) |>
+  summarise(n = n())
+
+nb_grades <- as.integer(nb_grades)
+```
+
+The data set contains `r nb_grades` grades.
 
