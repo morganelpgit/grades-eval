@@ -311,6 +311,7 @@ ehs_per_student |>
   ) +
   theme_minimal()
 ```
+It seems to depend on the group, as the length of the boxplots are not the same.
 
 ### 18
 
@@ -324,6 +325,29 @@ ehs_per_student |>
     fill = "sex"
   ) +
   theme_minimal()
+```
+It seems to depend on the sex as well, as the length of the boxplots in red and blue are not the same.
+
+## 5 
+
+### 19 
+
+```{r}
+new_df <- full_data |>
+  select(id, group, course, grade) |>
+  summarise(
+    mean_grade = mean(grade, na.rm = TRUE),
+    .by = c(id, group, course)
+  ) |>
+  pivot_wider(
+    names_from = course,
+    values_from = mean_grade
+  )
+
+new_df |>
+  select(id,group,`Artificial Intelligence and Robotics`,`Astroengineering and Planetary Colonization`) |>
+  slice_head(n=5) |>
+  knitr::kable()
 ```
 
 
