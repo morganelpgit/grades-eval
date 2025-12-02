@@ -448,5 +448,19 @@ final_grades |>
 ```
 No clear difference between sex. 
 
+### 26
+
+```{r}
+#| message: false
+#| warning: false
+last <- final_grades |>
+  mutate(
+    pass = ifelse(
+      if_all(-c(id, group, final_grade), \(x) x >= 5),
+      TRUE,
+      FALSE
+    )
+  )
+```
 
 
