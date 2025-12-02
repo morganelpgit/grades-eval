@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+Link of Git Hub repository : https://github.com/morganelpgit/grades-eval.git 
+
 ## 1
 
 ```{r}
@@ -167,4 +169,37 @@ nb_grades <- as.integer(nb_grades)
 ```
 
 The data set contains `r nb_grades` grades.
+
+### 11
+
+```{r}
+grades_courses <- grades |>
+  inner_join(courses, by = "course_id")
+
+full_data <- grades_courses |>
+  inner_join(students, by = "id")
+
+full_data <- full_data |>
+  filter(course == "Cybernetics and Human Augmentation") |>
+  summarise(avg_grade = mean(grade, na.rm = TRUE), .by = group)
+  
+full_data |>
+  ggplot(aes(x = group, y = avg_grade)) +
+  geom_col() +
+  labs(
+    x = "group",
+    y = "average grade"
+  ) +
+  theme_minimal()
+```
+
+
+### 12
+
+take all grades of semester, compare distribution of the grade, (not a part course)
+
+## 4 
+
+
+
 
