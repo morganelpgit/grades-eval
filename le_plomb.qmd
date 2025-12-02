@@ -97,3 +97,22 @@ students |>
   theme_minimal()
 ```
 
+### 6 
+
+```{r}
+students |>
+  ggplot(aes(x = group, fill = sex)) +
+  geom_bar(position = "fill") +
+  labs(
+    x = "group",
+    fill = "sex"
+  ) +
+  theme_minimal()
+```
+
+### 7 
+
+```{r}
+
+```
+
