@@ -350,4 +350,22 @@ new_df |>
   knitr::kable()
 ```
 
+### 20
+
+```{r}
+new_df |>
+  ggplot(aes(
+    x = `Interstellar Travel and Navigation`,
+    y = `Space Law and Ethics`
+  )) +
+  geom_point(alpha=0.25) +
+  theme_minimal()
+```
+
+### 21 
+
+```{r}
+
+```
+
 
