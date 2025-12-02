@@ -128,4 +128,16 @@ students_age |>
   ) +
   theme_minimal()
 ```
+### 8 
+
+```{r}
+table <- students_age |>
+  summarise(
+    median_age = as.integer(median(age)),
+    .by = group
+  )
+
+table |>
+  knitr::kable()
+```
 
