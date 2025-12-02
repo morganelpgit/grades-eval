@@ -365,17 +365,40 @@ new_df |>
 ### 21 
 
 ```{r}
-new_df |>
+corr <- new_df |>
   summarise(
     correlation = cor(
       `Energy Harvesting and Sustainability`,
       `Quantum Physics and Time Manipulation`
     ),
     .by = group
-  ) |>
+  ) 
+
+corr |>
   slice_head(n=5) |>
   knitr::kable() 
-
 ```
+
+### 21
+
+```{r}
+best_group <- corr |>
+  slice_max(abs(correlation)) |>
+  pull(group)
+
+new_df |>
+  filter(group == best_group) |>
+  ggplot(aes(
+    x = `Quantum Physics and Time Manipulation`,
+    y = `Energy Harvesting and Sustainability`
+  )) +
+  geom_point() +
+  labs(
+    x = "avg grade in QPTM",
+    y = "avg grade in EHS"
+  ) +
+  theme_minimal()
+```
+
 
 
