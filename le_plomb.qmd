@@ -25,4 +25,17 @@ data <- vroom(here("data","courses.csv"))
 
 ### 2 
 
+```{r}
+data |> 
+  mutate(
+    `course name` = course,
+    identifier = course_id,
+    trimester = trimester,
+    `number of exams` = nb_grades
+  ) |>
+  select(`course name`, identifier, trimester, `number of exams`) |>
+  knitr::kable()
+```
+
+
 
