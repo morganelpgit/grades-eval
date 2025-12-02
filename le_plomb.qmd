@@ -432,5 +432,21 @@ final_grades |>
   theme_minimal()
 ```
 
+groups are not at the same level.
+
+### 25 
+
+```{r}
+final_grades |>
+  ggplot(aes(x = as.factor(group), y = final_grade, fill=sex)) +
+  geom_violin() +
+  labs(
+    x = "group",
+    y = "final grade"
+  ) +
+  theme_minimal()
+```
+No clear difference between sex. 
+
 
 
