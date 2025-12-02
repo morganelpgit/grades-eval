@@ -223,6 +223,31 @@ full_data |>
 
 ### 13 
 
+```{r}
+grades_selected <- full_data |>
+  select(id, group, sex, grade)
+
+grades_per_student <- grades_selected |>
+  summarise(
+    n_grades = n(),
+    .by = c(id, group, sex)
+  )
+
+grades_per_student |>
+  slice_head(n = 10) |>
+  knitr::kable()
+
+stats <- grades_per_student |>
+  summarise(
+    minimum = min(n_grades),
+    maximum = max(n_grades),
+    average = mean(n_grades),
+    median  = median(n_grades)
+  )
+
+stats |>
+  knitr::kable()
+```
 
 
 
