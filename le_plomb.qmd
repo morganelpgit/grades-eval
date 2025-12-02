@@ -299,6 +299,31 @@ distribution_ehs |>
   ) +
   theme_minimal()
 ```
+### 17
 
+```{r}
+ehs_per_student |>
+  ggplot(aes(x = as.factor(group), y = n_grades)) +
+  geom_boxplot() +
+  labs(
+    x = "group",
+    y = "number of grades"
+  ) +
+  theme_minimal()
+```
+
+### 18
+
+```{r}
+ehs_per_student |>
+  ggplot(aes(x = as.factor(group), y = n_grades, fill = sex)) +
+  geom_boxplot() +
+  labs(
+    x = "group",
+    y = "number of grades",
+    fill = "sex"
+  ) +
+  theme_minimal()
+```
 
 
