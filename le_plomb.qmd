@@ -269,7 +269,6 @@ ehs_id <- courses |>
   filter(course == "Energy Harvesting and Sustainability") |>
   pull(course_id)
 
-# number of grades in this course per student
 ehs_per_student <- full_data |>
   filter(course == "Energy Harvesting and Sustainability") |>
   summarise(
@@ -282,6 +281,24 @@ ehs_per_student |>
   knitr::kable()
 ```
 
-## 5 
+### 16
+
+```{r}
+distribution_ehs <- ehs_per_student |>
+  summarise(
+    count = n(),
+    .by = n_grades
+  )
+
+distribution_ehs |>
+  ggplot(aes(x = n_grades, y = count)) +
+  geom_col() +
+  labs(
+    x = "number of grades",
+    y = "number of students"
+  ) +
+  theme_minimal()
+```
+
 
 
