@@ -74,4 +74,11 @@ The group column is of class  `r class(students |> pull(group))`.
 
 The id column is of class  `r class(students |> pull(id))`.
 
+### 4 
+
+```{r}
+grades <- vroom(here("data","grades.csv"),
+                delim = "|",
+                na = "*",)
+```
 
