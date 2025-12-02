@@ -198,7 +198,30 @@ full_data |>
 
 take all grades of semester, compare distribution of the grade, (not a part course)
 
+```{r}
+grades_courses <- grades |>
+  inner_join(courses, by = "course_id")
+
+full_data <- grades_courses |>
+  inner_join(students, by = "id") |>
+  filter(!is.na(grade)) |>
+  mutate(trimester = factor(trimester))
+
+full_data |>
+  ggplot(aes(x = grade,)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~ trimester) +
+  labs(
+    x = "grade",
+    y = "count"
+  ) +
+  theme_minimal()
+
+```
+
 ## 4 
+
+### 13 
 
 
 
